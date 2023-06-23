@@ -40,5 +40,14 @@ class ItemUpdateFactoryTest {
 		assertTrue(factoryObj instanceof ItemSulfuras);
 	}
 	
+	@DisplayName("Should have general type Object")
+	@Test
+	void testObjectGeneral() {
+		Item item = new Item("test", 2, 0);
+		
+		ItemUpdate factoryObj =  ItemUpdateFactory.createItemUpate(item);
+		
+		assertTrue(factoryObj instanceof ItemGeneral);
+	}
 	
 }

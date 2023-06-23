@@ -18,7 +18,7 @@ public class ItemUpdateFactory {
 			return new ItemSulfuras();	
 		
 		default:
-			return null;
+			return new ItemGeneral();
 
 		}
 
