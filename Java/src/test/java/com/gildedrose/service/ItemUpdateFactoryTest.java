@@ -30,4 +30,15 @@ class ItemUpdateFactoryTest {
 		assertTrue(factoryObj instanceof ItemBackstage);
 	}
 	
+	@DisplayName("Should have sulfuras Object")
+	@Test
+	void testObjectSulfuras() {
+		Item item = new Item(ApplicationConstant.SULFURAS, 2, 0);
+		
+		ItemUpdate factoryObj =  ItemUpdateFactory.createItemUpate(item);
+		
+		assertTrue(factoryObj instanceof ItemSulfuras);
+	}
+	
+	
 }

@@ -12,7 +12,10 @@ public class ItemUpdateFactory {
 			return new ItemAgedBrie();
 			
 		case ApplicationConstant.BACKSTAGE:
-			return new ItemBackstage();		
+			return new ItemBackstage();	
+			
+		case ApplicationConstant.SULFURAS:
+			return new ItemSulfuras();	
 		
 		default:
 			return null;
