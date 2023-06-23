@@ -20,4 +20,14 @@ class ItemUpdateFactoryTest {
 		assertTrue(factoryObj instanceof ItemAgedBrie);
 	}
 	
+	@DisplayName("Should have BackStage Object")
+	@Test
+	void testObjectBackStage () {
+		Item item = new Item(ApplicationConstant.BACKSTAGE, 2, 0);
+		
+		ItemUpdate factoryObj =  ItemUpdateFactory.createItemUpate(item);
+		
+		assertTrue(factoryObj instanceof ItemBackstage);
+	}
+	
 }

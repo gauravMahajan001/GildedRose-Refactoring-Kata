@@ -10,6 +10,9 @@ public class ItemUpdateFactory {
 		switch (item.name) {
 		case ApplicationConstant.AGED_BRIE:
 			return new ItemAgedBrie();
+			
+		case ApplicationConstant.BACKSTAGE:
+			return new ItemBackstage();		
 		
 		default:
 			return null;
