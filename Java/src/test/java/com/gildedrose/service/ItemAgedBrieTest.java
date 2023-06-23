@@ -10,7 +10,7 @@ import com.gildedrose.constant.ApplicationConstant;
 
 class ItemAgedBrieTest {
 	
-	private ItemAgedBrie itemAgedBrie = new ItemAgedBrie();
+	private ItemUpdate itemAgedBrie = new ItemAgedBrie();
 	
 	@DisplayName("Item quantity greater than max quantity then quantity same")
 	@Test
