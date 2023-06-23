@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import java.util.Arrays;
+
 import com.gildedrose.constant.ApplicationConstant;
 import com.gildedrose.service.ItemUpdate;
 
@@ -11,60 +13,60 @@ class GildedRose implements ItemUpdate {
 	}
 
 	public void updateQuality() {
-		for (int i = 0; i < items.length; i++) {
-			if (items[i].name.equals(ApplicationConstant.AGED_BRIE)
-					|| items[i].name.equals(ApplicationConstant.BACKSTAGE)) {
+		Arrays.stream(items).forEach(item -> {
+			
+			if (item.name.equals(ApplicationConstant.AGED_BRIE) || item.name.equals(ApplicationConstant.BACKSTAGE)) {
 
-				if (items[i].quality < 50) {
-					this.increaseQuantity(items[i]);
+				if (item.quality < 50) {
+					this.increaseQuantity(item);
 
-					if (items[i].name.equals(ApplicationConstant.BACKSTAGE)) {
-						if (items[i].sellIn < 11) {
-							if (items[i].quality < 50) {
+					if (item.name.equals(ApplicationConstant.BACKSTAGE)) {
+						if (item.sellIn < 11) {
+							if (item.quality < 50) {
 
-								this.increaseQuantity(items[i]);
+								this.increaseQuantity(item);
 							}
 						}
 
-						if (items[i].sellIn < 6) {
-							if (items[i].quality < 50) {
-								this.increaseQuantity(items[i]);
+						if (item.sellIn < 6) {
+							if (item.quality < 50) {
+								this.increaseQuantity(item);
 							}
 						}
 					}
 				}
 			} else {
-				if (items[i].quality > 0) {
-					if (!items[i].name.equals(ApplicationConstant.SULFURAS)) {
-						this.decreaseQuantity(items[i]);
+				if (item.quality > 0) {
+					if (!item.name.equals(ApplicationConstant.SULFURAS)) {
+						this.decreaseQuantity(item);
 					}
 				}
 			}
 
-			if (!items[i].name.equals(ApplicationConstant.SULFURAS)) {
-				this.decreaseSellin(items[i]);
+			if (!item.name.equals(ApplicationConstant.SULFURAS)) {
+				this.decreaseSellin(item);
 			}
 
-			if (items[i].sellIn < 0) {
-				if (items[i].name.equals("Aged Brie")) {
+			if (item.sellIn < 0) {
+				if (item.name.equals("Aged Brie")) {
 
-					if (items[i].quality < 50) {
-						this.increaseQuantity(items[i]);
+					if (item.quality < 50) {
+						this.increaseQuantity(item);
 					}
 				} else {
-					if (items[i].name.equals(ApplicationConstant.BACKSTAGE)) {
+					if (item.name.equals(ApplicationConstant.BACKSTAGE)) {
 
-						items[i].quality = 0;
+						item.quality = 0;
 					} else {
-						if (items[i].quality > 0) {
-							if (!items[i].name.equals(ApplicationConstant.SULFURAS)) {
-								this.decreaseQuantity(items[i]);
+						if (item.quality > 0) {
+							if (!item.name.equals(ApplicationConstant.SULFURAS)) {
+								this.decreaseQuantity(item);
 							}
 						}
 					}
 
 				}
 			}
-		}
+		});
 	}
 }
