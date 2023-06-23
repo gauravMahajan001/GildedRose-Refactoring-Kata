@@ -12,6 +12,11 @@ public class ItemGeneral implements ItemUpdate {
 			this.decreaseQuantity(item);
 		}
 
-	}
+		this.decreaseSellin(item);
 
+		if (item.sellIn < 0 && item.quality > 0) {
+
+			this.decreaseQuantity(item);
+		}
+	}
 }
