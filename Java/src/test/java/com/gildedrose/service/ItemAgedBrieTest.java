@@ -46,4 +46,37 @@ class ItemAgedBrieTest {
 		assertEquals(expectedQuantity, item.quality);
 	}
 	
+	@DisplayName("Item quantity increase by 1")
+	@Test
+	void testQuantityIncrease() {
+		int quantity = 45;
+		int expectedQuantity = 46;
+		Item item = new Item(ApplicationConstant.AGED_BRIE, 0, quantity);
+		
+		itemAgedBrie.increaseQuantity(item);
+		assertEquals(expectedQuantity, item.quality);
+	}
+	
+	@DisplayName("Item quantity decrease by 1")
+	@Test
+	void testQuantityDecrease() {
+		int quantity = 45;
+		int expectedQuantity = 44;
+		Item item = new Item(ApplicationConstant.AGED_BRIE, 0, quantity);
+		
+		itemAgedBrie.decreaseQuantity(item);
+		assertEquals(expectedQuantity, item.quality);
+	}
+	
+	@DisplayName("Item sellin decrease by 1")
+	@Test
+	void testSellinDecrease() {
+		int sellin = 1;
+		int expectedSellin = 0;
+		Item item = new Item(ApplicationConstant.AGED_BRIE, sellin, 0);
+		
+		itemAgedBrie.decreaseSellin(item);
+		assertEquals(expectedSellin, item.quality);
+	} 
+	
 }
