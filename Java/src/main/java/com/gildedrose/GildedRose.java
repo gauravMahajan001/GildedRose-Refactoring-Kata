@@ -1,8 +1,9 @@
 package com.gildedrose;
 
 import com.gildedrose.constant.ApplicationConstant;
+import com.gildedrose.service.ItemUpdate;
 
-class GildedRose {
+class GildedRose implements ItemUpdate {
 	Item[] items;
 
 	public GildedRose(Item[] items) {
@@ -15,18 +16,19 @@ class GildedRose {
 					|| items[i].name.equals(ApplicationConstant.BACKSTAGE)) {
 
 				if (items[i].quality < 50) {
-					items[i].quality = items[i].quality + 1;
+					this.increaseQuantity(items[i]);
 
 					if (items[i].name.equals(ApplicationConstant.BACKSTAGE)) {
 						if (items[i].sellIn < 11) {
 							if (items[i].quality < 50) {
-								items[i].quality = items[i].quality + 1;
+
+								this.increaseQuantity(items[i]);
 							}
 						}
 
 						if (items[i].sellIn < 6) {
 							if (items[i].quality < 50) {
-								items[i].quality = items[i].quality + 1;
+								this.increaseQuantity(items[i]);
 							}
 						}
 					}
@@ -34,29 +36,29 @@ class GildedRose {
 			} else {
 				if (items[i].quality > 0) {
 					if (!items[i].name.equals(ApplicationConstant.SULFURAS)) {
-						items[i].quality = items[i].quality - 1;
+						this.decreaseQuantity(items[i]);
 					}
 				}
 			}
 
 			if (!items[i].name.equals(ApplicationConstant.SULFURAS)) {
-				items[i].sellIn = items[i].sellIn - 1;
+				this.decreaseSellin(items[i]);
 			}
 
 			if (items[i].sellIn < 0) {
 				if (items[i].name.equals("Aged Brie")) {
 
 					if (items[i].quality < 50) {
-						items[i].quality = items[i].quality + 1;
+						this.increaseQuantity(items[i]);
 					}
 				} else {
 					if (items[i].name.equals(ApplicationConstant.BACKSTAGE)) {
 
-						items[i].quality = items[i].quality - items[i].quality;
+						items[i].quality = 0;
 					} else {
 						if (items[i].quality > 0) {
 							if (!items[i].name.equals(ApplicationConstant.SULFURAS)) {
-								items[i].quality = items[i].quality - 1;
+								this.decreaseQuantity(items[i]);
 							}
 						}
 					}
